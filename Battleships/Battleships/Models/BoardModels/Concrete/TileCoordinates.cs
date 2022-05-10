@@ -1,4 +1,4 @@
-﻿namespace Battleships.Models.Board
+﻿namespace Battleships.Models.BoardModels
 {
     public class TileCoordinates
     {

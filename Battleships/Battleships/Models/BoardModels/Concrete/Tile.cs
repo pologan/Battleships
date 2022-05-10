@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Battleships.Models.Board
+namespace Battleships.Models.BoardModels
 {
     public class Tile
     {
