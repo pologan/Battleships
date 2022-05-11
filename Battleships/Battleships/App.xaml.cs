@@ -1,6 +1,4 @@
-﻿using Battleships.Services;
-using Battleships.Views;
-using System;
+﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +11,6 @@ namespace Battleships
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

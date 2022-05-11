@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Battleships.Models.GameModels
 {
-    internal class Game
+    public class Game
     {
         public Player Player1 { get; set; }
 

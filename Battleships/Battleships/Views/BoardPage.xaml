@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Battleships.Views.BoardPage" >
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="White" Margin="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Line HeightRequest="1" BackgroundColor="{StaticResource PrimaryText}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Grid BackgroundColor="White" Margin="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button Text="Simulate" BackgroundColor="{StaticResource Secondary}" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

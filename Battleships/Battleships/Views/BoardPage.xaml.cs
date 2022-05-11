@@ -1,32 +1,32 @@
-﻿using Battleships.Models;
-using Battleships.ViewModels;
-using Battleships.Views;
+﻿using Battleships.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Battleships.Views
 {
-    public partial class ItemsPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class BoardPage : ContentPage
     {
-        ItemsViewModel _viewModel;
-
-        public ItemsPage()
+        private readonly BoardViewModel _vm;
+        public BoardPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ItemsViewModel();
+            _vm = new BoardViewModel();
+            BindingContext = _vm;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.OnAppearing();
+
+            _vm.OnAppearing();
         }
     }
 }

@@ -7,9 +7,16 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
+            <!-- Colors -->
+            <Color x:Key="Primary">#285EA4</Color>
+            <Color x:Key="Background">#0D1321</Color>
+            <Color x:Key="Secondary">#BF3A0D</Color>
+            <Color x:Key="PrimaryText">#E2E2E2</Color>
+
+            <!-- Styles -->
+            <!-- Styles - Buttons -->
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor" Value="#E2E2E2"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -26,6 +33,21 @@
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </Setter>
+            </Style>
+
+            <!-- Styles - StackLayouts -->
+            <Style TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="{StaticResource Background}"></Setter>
+                <Setter Property="Padding" Value="15,35"></Setter>
+            </Style>
+
+            <!-- Styles - Labels -->
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryText}"></Setter>
+            </Style>
+
+            <Style TargetType="Label" x:Key="Header">
+                <Setter Property="FontSize" Value="20"></Setter>
             </Style>
         </ResourceDictionary>        
     </Application.Resources>
