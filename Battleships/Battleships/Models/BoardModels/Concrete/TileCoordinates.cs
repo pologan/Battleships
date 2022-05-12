@@ -8,7 +8,8 @@
 
         public TileCoordinates(int row, int column)
         {
-
+            Row = row;
+            Column = column;
         }
     }
 }

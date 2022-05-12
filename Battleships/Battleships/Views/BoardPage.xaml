@@ -1,13 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Battleships.Views.BoardPage" >
+             x:Class="Battleships.Views.BoardPage" 
+             xmlns:vm="clr-namespace:Battleships.ViewModels">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Simulate" />
+        <ToolbarItem Text="Randomize" Clicked="Randomize_Clicked" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Grid BackgroundColor="White" Margin="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-            <Line HeightRequest="1" BackgroundColor="{StaticResource PrimaryText}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"/>
-            <Grid BackgroundColor="White" Margin="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-            <Button Text="Simulate" BackgroundColor="{StaticResource Secondary}" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:DataType="vm:BoardViewModel">
+            <Label Style="{StaticResource Header}" Text="Player A"  HorizontalOptions="Center"/>
+            <Grid x:Name="gridA" Style="{StaticResource BoardGrid}" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Line HeightRequest="2" Margin="0,10,0,10" BackgroundColor="{StaticResource PrimaryText}" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            <Grid x:Name="gridB" Style="{StaticResource BoardGrid}" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Label Style="{StaticResource Header}" Text="Player B"  HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
