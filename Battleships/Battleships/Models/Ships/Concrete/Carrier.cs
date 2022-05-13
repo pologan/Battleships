@@ -2,10 +2,10 @@
 {
     public class Carrier : Ship
     {
-        public Carrier()
+        public Carrier() : base()
         {
             Name = "Carrier";
-            Length = (int)ShipType.Carrier;
+            Length = Health = (int)ShipType.Carrier;
             Type = ShipType.Carrier;
         }
     }

@@ -2,10 +2,10 @@
 {
     public class PatrolBoat : Ship
     {
-        public PatrolBoat()
+        public PatrolBoat() : base()
         {
             Name = "Patrol boat";
-            Length = (int)ShipType.PatrolBoat;
+            Length = Health = (int)ShipType.PatrolBoat;
             Type = ShipType.PatrolBoat;
         }
     }

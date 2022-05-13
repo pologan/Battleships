@@ -2,10 +2,10 @@
 {
     public class Destroyer : Ship
     {
-        public Destroyer()
+        public Destroyer() : base()
         {
             Name = "Destroyer";
-            Length = (int)ShipType.Destroyer;
+            Length = Health = (int)ShipType.Destroyer;
             Type = ShipType.Destroyer;
         }
     }

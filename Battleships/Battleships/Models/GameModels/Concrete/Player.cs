@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Battleships.Models.BoardModels;
+using Battleships.Models.Ships;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Battleships.Models.BoardModels;
-using Battleships.Models.Ships;
 
 namespace Battleships.Models.GameModels
 {
@@ -12,6 +11,8 @@ namespace Battleships.Models.GameModels
         public string Name { get; set; }
 
         public Board Board { get; set; }
+
+        public HitBoard HitBoard { get; set; }
 
         public List<Ship> Ships { get; set; }
 
@@ -35,6 +36,7 @@ namespace Battleships.Models.GameModels
                 new PatrolBoat()
             };
             Board = new Board();
+            HitBoard = new HitBoard();
 
             PlaceShips();
         }
@@ -84,10 +86,76 @@ namespace Battleships.Models.GameModels
                     foreach(var tile in occupiedTiles)
                     {
                         tile.Type = TileType.ShipPart;
+                        ship.Coordinates.Add(tile.Coordinates);
                     }
 
                     isOpen = false;
                 }
+            }
+        }
+        
+        public TileCoordinates Fire()
+        {
+            var hitCoords = HitBoard.GetNearHitTiles();
+            TileCoordinates coords;
+            if(hitCoords.Any())
+            {
+                coords = SearchingFire();
+            }
+            else
+            {
+                coords = RandomFire();
+            }
+
+            return coords;
+        }
+
+        private TileCoordinates RandomFire()
+        {
+            var availableTiles = HitBoard.GetOpenTiles();
+            Random r = new Random(Guid.NewGuid().GetHashCode());
+            var tileId = r.Next(availableTiles.Count);
+            return availableTiles[tileId];
+        }
+
+        private TileCoordinates SearchingFire()
+        {
+            var nearHits = HitBoard.GetNearHitTiles();
+            Random r = new Random(Guid.NewGuid().GetHashCode());
+            var tileId = r.Next(nearHits.Count);
+            return nearHits[tileId];
+        }
+
+        public FireResult ProcessFire(TileCoordinates coords)
+        {
+            var tile = Board.Tiles.First(t => t.Coordinates.Row == coords.Row && t.Coordinates.Column == coords.Column);
+
+            if(tile.Type != TileType.ShipPart)
+            {
+                tile.Type = TileType.Miss;
+
+                return FireResult.Miss;
+            }
+
+            var ship = Ships.First(s => s.Coordinates.Any(c => c.Row == coords.Row && c.Column == coords.Column));
+            --ship.Health;
+
+            tile.Type = TileType.Hit;
+
+            return FireResult.Hit;
+        }
+
+        public void ProcessFireResult(TileCoordinates coords, FireResult fireResult)
+        {
+            var tile = HitBoard.Tiles.First(t => t.Coordinates.Row == coords.Row && t.Coordinates.Column == coords.Column);
+
+            if(fireResult == FireResult.Hit)
+            {
+                tile.Type = TileType.Hit;
+            }
+            else
+            {
+                tile.Type = TileType.Miss;
             }
         }
     }

@@ -1,10 +1,15 @@
-﻿namespace Battleships.Models.Ships
+﻿using Battleships.Models.BoardModels;
+using System.Collections.Generic;
+
+namespace Battleships.Models.Ships
 {
     public abstract class Ship
     {
         public string Name { get; set; }
 
         public int Length { get; set; }
+
+        public List<TileCoordinates> Coordinates { get; set; } 
 
         public int Health { get; set; }
 
@@ -14,8 +19,13 @@
         {
             get
             {
-                return Health == 0;
+                return Health <= 0;
             }
+        }
+
+        public Ship()
+        {
+            Coordinates = new List<TileCoordinates>(); 
         }
     }
 }

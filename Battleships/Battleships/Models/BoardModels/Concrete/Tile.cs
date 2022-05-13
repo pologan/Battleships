@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Battleships.Models.BoardModels
+﻿namespace Battleships.Models.BoardModels
 {
     public class Tile
     {
@@ -16,5 +12,12 @@ namespace Battleships.Models.BoardModels
             Type = TileType.Empty;
         }
 
+        public bool IsRandomAvailable {
+            get 
+            {
+                return (Coordinates.Row % 2 == 0 && Coordinates.Column % 2 == 0) 
+                    || (Coordinates.Row % 2 == 1 && Coordinates.Column % 2 == 1);
+            }
+        }
     }
 }

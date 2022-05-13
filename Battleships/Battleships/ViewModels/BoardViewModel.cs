@@ -2,8 +2,6 @@
 using Battleships.Models.BoardModels;
 using Battleships.Models.GameModels;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace Battleships.ViewModels
@@ -14,13 +12,12 @@ namespace Battleships.ViewModels
 
         public BoardViewModel()
         {
-            Game = new Game();
+            InitNewGame();
         }
 
-        public void OnAppearing()
+        public void InitNewGame()
         {
-            Game.Player1 = new Player("Player A");
-            Game.Player2 = new Player("Player B");
+            Game = new Game();
         }
 
         public void InitBoard(Board board, Grid grid)
@@ -44,6 +41,11 @@ namespace Battleships.ViewModels
                         Text = tile.Type.GetSymbol()
                     }, tile.Coordinates.Column, tile.Coordinates.Row);
             }
+        }
+
+        public void Simulate()
+        {
+            Game.PlayGame();
         }
     }
 }

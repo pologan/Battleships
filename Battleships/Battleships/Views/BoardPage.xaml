@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:Battleships.ViewModels">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Simulate" />
+        <ToolbarItem Text="Simulate" Clicked="Simulate_Clicked" />
         <ToolbarItem Text="Randomize" Clicked="Randomize_Clicked" />
     </ContentPage.ToolbarItems>
 

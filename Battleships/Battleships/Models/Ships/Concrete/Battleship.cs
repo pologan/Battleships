@@ -2,10 +2,10 @@
 { 
     public class Battleship : Ship
     {
-        public Battleship()
+        public Battleship() : base()
         {
             Name = "Battleship";
-            Length = (int)ShipType.Battleship;
+            Length = Health = (int)ShipType.Battleship;
             Type = ShipType.Battleship;
         }
     }
