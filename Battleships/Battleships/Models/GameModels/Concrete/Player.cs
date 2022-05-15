@@ -50,8 +50,8 @@ namespace Battleships.Models.GameModels
                 var isOpen = true;
                 while(isOpen)
                 {
-                    var startColumn = r.Next(Board.HEIGHT);
-                    var startRow = r.Next(Board.WIDTH);
+                    var startColumn = r.Next(Board.WIDTH);
+                    var startRow = r.Next(Board.HEIGHT);
                     var endRow = startRow;
                     var endColumn = startColumn;
                     var orientation = (ShipOrientation)(r.Next(10) % 2); 
@@ -59,14 +59,14 @@ namespace Battleships.Models.GameModels
                     var tileNumbers = new List<int>();
                     if(orientation == ShipOrientation.Horizontal)
                     {
-                        endRow += ship.Length;
+                        endColumn += ship.Length - 1;
                     }
                     else
                     {
-                        endColumn += ship.Length;
+                        endRow += ship.Length - 1;
                     }
 
-                    if(endRow > Board.WIDTH || endColumn > Board.HEIGHT)
+                    if (endRow >= Board.HEIGHT || endColumn >= Board.WIDTH)
                     {
                         isOpen = true;
                         continue;
