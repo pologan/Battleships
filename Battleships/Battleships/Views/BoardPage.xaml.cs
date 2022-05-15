@@ -1,7 +1,7 @@
 ﻿using Battleships.Extensions;
 using Battleships.ViewModels;
 using System;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,8 +23,8 @@ namespace Battleships.Views
         {
             base.OnAppearing();
 
-            _vm.InitBoard(_vm.Game.Player1.Board, gridA);
-            _vm.InitBoard(_vm.Game.Player2.Board, gridB);
+            _vm.InitBoard(_vm.Game.PlayerA.Board, gridA);
+            _vm.InitBoard(_vm.Game.PlayerB.Board, gridB);
         }
 
         private void Randomize_Clicked(object sender, EventArgs e)
@@ -39,15 +39,35 @@ namespace Battleships.Views
             gridA.Clear();
             gridB.Clear();
 
-            _vm.InitBoard(_vm.Game.Player1.Board, gridA);
-            _vm.InitBoard(_vm.Game.Player2.Board, gridB);
+            _vm.InitBoard(_vm.Game.PlayerA.Board, gridA);
+            _vm.InitBoard(_vm.Game.PlayerB.Board, gridB);
         }
 
-        private void Simulate_Clicked(object sender, EventArgs e)
+        private async void Simulate_Clicked(object sender, EventArgs e)
         {
-            _vm.Simulate();
+            if (!_vm.Game.Finished)
+            {
+                _vm.Simulate();
 
-            RefreshBoards();
+                RefreshBoards();
+
+                if (await DisplayWinner(_vm.WinnerName))
+                {
+                    _vm.InitNewGame();
+
+                    RefreshBoards();
+                }
+            }
+            else
+            {
+                await DisplayAlert("Forbidden action", "Cannot simulate already finished game", "Ok");
+            }
         }
+
+        private async Task<bool> DisplayWinner(string winnerName)
+        {
+            return await DisplayAlert("Game finished", $"The winner is {winnerName}!", "Randomize again", "Close window"); 
+        }
+
     }
 }

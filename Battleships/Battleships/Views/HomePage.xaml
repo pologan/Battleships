@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Battleships.Views.HomePage"
-             xmlns:vm="clr-namespace:Battleships.ViewModels">
+             xmlns:vm="clr-namespace:Battleships.ViewModels" 
+             x:DataType="vm:HomeViewModel"
+             Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout x:DataType="vm:HomeViewModel">
+        <StackLayout>
             <Label Style="{StaticResource Header}" Text="Battleship Simulator"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />

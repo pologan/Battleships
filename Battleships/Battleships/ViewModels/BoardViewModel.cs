@@ -10,8 +10,22 @@ namespace Battleships.ViewModels
     {
         public Game Game { get; set; }
 
+        public string WinnerName
+        {
+            get
+            {
+                if (Game.Finished)
+                {
+                    return Game.Winner.Name;
+                }
+                return "Nobody (?)";
+            }
+        }
+
         public BoardViewModel()
         {
+            Title = "Board";
+
             InitNewGame();
         }
 

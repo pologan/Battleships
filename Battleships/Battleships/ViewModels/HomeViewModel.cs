@@ -13,6 +13,8 @@ namespace Battleships.ViewModels
         public HomeViewModel()
         {
             PlaceShipsCommand = new Command(() => PlaceShips());
+
+            Title = "Welcome";
         }
 
         private async void PlaceShips()
