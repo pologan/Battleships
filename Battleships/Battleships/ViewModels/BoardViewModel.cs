@@ -1,6 +1,7 @@
 ﻿using Battleships.Extensions;
 using Battleships.Models.BoardModels;
 using Battleships.Models.GameModels;
+using Battleships.Views;
 using System;
 using Xamarin.Forms;
 
@@ -14,7 +15,7 @@ namespace Battleships.ViewModels
         {
             get
             {
-                if (Game.Finished)
+                if (Game.IsFinished)
                 {
                     return Game.Winner.Name;
                 }
@@ -45,6 +46,11 @@ namespace Battleships.ViewModels
                         Text = tile.Type.GetSymbol()
                     }, tile.Coordinates.Row, tile.Coordinates.Column);
             }
+        }
+
+        public void GoBack()
+        {
+            Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
 
         public void Simulate()

@@ -12,6 +12,7 @@
             <Color x:Key="Background">#0D1321</Color>
             <Color x:Key="Secondary">#BF3A0D</Color>
             <Color x:Key="PrimaryText">#E2E2E2</Color>
+            <Color x:Key="ErrorText">#ec4006</Color>
 
             <!-- Styles -->
             <!-- Styles - Buttons -->
@@ -50,6 +51,12 @@
                 <Setter Property="FontSize" Value="20"></Setter>
             </Style>
 
+            <Style TargetType="Label" x:Key="Error">
+                <Setter Property="FontSize" Value="12"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource ErrorText}"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+            </Style>
+
             <Style TargetType="Label" x:Key="Tile">
                 <Setter Property="FontSize" Value="15"></Setter>
                 <Setter Property="Margin" Value="1"></Setter>
@@ -66,6 +73,12 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryText}"/>
                 <Setter Property="ColumnSpacing" Value="0"/>
                 <Setter Property="RowSpacing" Value="0"/>
+            </Style>
+
+            <!-- Styles - Entries -->
+            <Style TargetType="Entry" x:Key="Settings">
+                <Setter Property="Keyboard" Value="Numeric" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryText}" />
             </Style>
         </ResourceDictionary>        
     </Application.Resources>

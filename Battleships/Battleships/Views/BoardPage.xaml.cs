@@ -21,10 +21,16 @@ namespace Battleships.Views
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
+            _vm.InitNewGame();
 
-            _vm.InitBoard(_vm.Game.PlayerA.Board, gridA);
-            _vm.InitBoard(_vm.Game.PlayerB.Board, gridB);
+            RefreshBoards();
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            _vm.GoBack();
+
+            return true;
         }
 
         private void Randomize_Clicked(object sender, EventArgs e)
@@ -45,7 +51,7 @@ namespace Battleships.Views
 
         private async void Simulate_Clicked(object sender, EventArgs e)
         {
-            if (!_vm.Game.Finished)
+            if (!_vm.Game.IsFinished)
             {
                 _vm.Simulate();
 
@@ -66,7 +72,7 @@ namespace Battleships.Views
 
         private async Task<bool> DisplayWinner(string winnerName)
         {
-            return await DisplayAlert("Game finished", $"The winner is {winnerName}!", "Randomize again", "Close window"); 
+            return await DisplayAlert("Game finished", $"The winner is {winnerName}!", "Randomize again", "Close window");
         }
 
     }

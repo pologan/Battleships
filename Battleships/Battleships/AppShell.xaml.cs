@@ -13,7 +13,8 @@ namespace Battleships
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(BoardPage), typeof(BoardPage));
-            //Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(SettingsPage), typeof(SettingsPage));
+            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
         }
 
     }

@@ -10,7 +10,7 @@ namespace Battleships.Models.GameModels
 
         public Player PlayerB { get; set; }
 
-        public bool Finished
+        public bool IsFinished
         {
             get
             {
@@ -23,7 +23,7 @@ namespace Battleships.Models.GameModels
         {
             get
             {
-                if (Finished)
+                if (IsFinished)
                 {
                     if (PlayerA.HasLost)
                     {
@@ -61,7 +61,7 @@ namespace Battleships.Models.GameModels
 
         public void PlayGame()
         {
-            while (!PlayerA.HasLost && !PlayerB.HasLost)
+            while (!IsFinished)
             {
                 PlayRound();
             }
