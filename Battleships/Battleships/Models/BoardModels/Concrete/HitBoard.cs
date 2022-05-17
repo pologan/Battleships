@@ -1,10 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using Battleships.Models.GameModels;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Battleships.Models.BoardModels
 {
     public class HitBoard : Board
     {
+        public HitBoard(int width, int height) : base(width, height)
+        {
+
+        }
+
         public List<TileCoordinates> GetNearHitTiles()
         {
             List<Tile> tiles = new List<Tile>();
@@ -33,11 +39,11 @@ namespace Battleships.Models.BoardModels
             {
                 tiles.Add(Tiles.First(t => t.Coordinates.Row == coords.Row - 1 && t.Coordinates.Column == coords.Column));
             }
-            if(coords.Column < Board.WIDTH - 1)
+            if(coords.Column < Settings.Width - 1)
             {
                 tiles.Add(Tiles.First(t => t.Coordinates.Row == coords.Row && t.Coordinates.Column == coords.Column + 1));
             }
-            if(coords.Row < Board.HEIGHT - 1)
+            if(coords.Row < Settings.Height - 1)
             {
                 tiles.Add(Tiles.First(t => t.Coordinates.Row == coords.Row + 1 && t.Coordinates.Column == coords.Column));
             }

@@ -31,15 +31,11 @@ namespace Battleships.ViewModels
             }
         }
 
-        public Command SaveCommand { get; set; }
-
         private List<SettingsErrorTypes> Errors { get; set; }
 
         public SettingsViewModel()
         {
             Title = "Settings";
-
-            SaveCommand = new Command(() => Save());
 
             LoadData();
         }
@@ -61,7 +57,7 @@ namespace Battleships.ViewModels
             Errors = new List<SettingsErrorTypes>();
         }
 
-        private void Save()
+        public bool Save()
         {
             if (Validate())
             {
@@ -71,11 +67,17 @@ namespace Battleships.ViewModels
                 Settings.PatrolBoats = PatrolBoats;
                 Settings.Carriers = Carriers;
                 Settings.Destroyers = Destroyers;
+
+                return true;
             }
+
+            return false;
         }
 
         private bool Validate()
         {
+            Errors.Clear();
+
             if (Width < 8)
                 Errors.Add(SettingsErrorTypes.WidthTooSmall);
 

@@ -29,5 +29,19 @@ namespace Battleships.Views
 
             _vm.OnApppearing();
         }
+
+        private void Save_Clicked(object sender, EventArgs e)
+        {
+            if(_vm.Save())
+            {
+                DisplayAlert("Saved", "Settings saved", "Ok");
+
+
+            }
+            else
+            {
+                DisplayAlert("Errors occured", _vm.ErrorLog, "Ok");
+            }
+        }
     }
 }

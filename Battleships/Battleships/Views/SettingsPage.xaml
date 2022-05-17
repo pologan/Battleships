@@ -22,8 +22,7 @@
             <Label Text="Patrol boats" />
             <Entry Style="{StaticResource Settings}" Text="{Binding PatrolBoats}" />
             
-            <Label Style="{StaticResource Error}" Text="{Binding ErrorLog}" VerticalOptions="EndAndExpand"/>
-            <Button Text="Save" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Command="{Binding SaveCommand}" />
+            <Button Text="Save" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Clicked="Save_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

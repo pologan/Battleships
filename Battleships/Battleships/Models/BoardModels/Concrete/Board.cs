@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Battleships.Models.GameModels;
+using System.Collections.Generic;
 
 namespace Battleships.Models.BoardModels
 {
@@ -6,16 +7,12 @@ namespace Battleships.Models.BoardModels
     {
         public List<Tile> Tiles { get; set; }
 
-        public const int WIDTH = 10;
-
-        public const int HEIGHT = 10;
-
-        public Board()
+        public Board(int width, int height)
         {
             Tiles = new List<Tile>();
-            for (int i = 0; i < WIDTH; i++)
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < HEIGHT; j++)
+                for (int j = 0; j < width; j++)
                 {
                     Tiles.Add(new Tile(i, j));
                 }

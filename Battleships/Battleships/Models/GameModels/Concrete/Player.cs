@@ -27,18 +27,35 @@ namespace Battleships.Models.GameModels
         public Player(string name)
         {
             Name = name;
-            Ships = new List<Ship>()
-            {
-                new Battleship(),
-                new Carrier(),
-                new Destroyer(),
-                new Destroyer(),
-                new PatrolBoat()
-            };
-            Board = new Board();
-            HitBoard = new HitBoard();
+            Ships = InitShips();
+            Board = new Board(Settings.Width, Settings.Height);
+            HitBoard = new HitBoard(Settings.Width, Settings.Height);
 
             PlaceShips();
+        }
+
+        private List<Ship> InitShips()
+        {
+            var ships = new List<Ship>();
+
+            for (int i = 0; i < Settings.Battleships; i++)
+            {
+                ships.Add(new Battleship());
+            }
+            for (int i = 0; i < Settings.Carriers; i++)
+            {
+                ships.Add(new Carrier());
+            }
+            for (int i = 0; i < Settings.Destroyers; i++)
+            {
+                ships.Add(new Destroyer());
+
+            }
+            for (int i = 0; i < Settings.PatrolBoats; i++)
+            {
+                ships.Add(new PatrolBoat());
+            }
+            return ships;
         }
 
         private void PlaceShips()
@@ -50,8 +67,8 @@ namespace Battleships.Models.GameModels
                 var isOpen = true;
                 while(isOpen)
                 {
-                    var startColumn = r.Next(Board.WIDTH);
-                    var startRow = r.Next(Board.HEIGHT);
+                    var startColumn = r.Next(Settings.Width);
+                    var startRow = r.Next(Settings.Height);
                     var endRow = startRow;
                     var endColumn = startColumn;
                     var orientation = (ShipOrientation)(r.Next(10) % 2); 
@@ -66,7 +83,7 @@ namespace Battleships.Models.GameModels
                         endRow += ship.Length - 1;
                     }
 
-                    if (endRow >= Board.HEIGHT || endColumn >= Board.WIDTH)
+                    if (endRow >= Settings.Height || endColumn >= Settings.Width)
                     {
                         isOpen = true;
                         continue;

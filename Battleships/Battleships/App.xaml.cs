@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Battleships.Models.GameModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,6 +11,8 @@ namespace Battleships
         public App()
         {
             InitializeComponent();
+
+            Settings.Init();
 
             MainPage = new AppShell();
         }
