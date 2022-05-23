@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Essentials;
+﻿using Xamarin.Essentials;
 
-namespace Battleships.Models.GameModels
+namespace Battleships.Models.GameModels.Concrete
 {
     public static class Settings
     {
         private static int _width;
 
-        public static int Width {
-            get
-            {
-                return _width;
-            }
+        private static int _height;
+
+        private static int _battleships;
+
+        private static int _carriers;
+
+        private static int _destroyers;
+
+        private static int _patrolBoats;
+
+        public static int Width
+        {
+            get => _width;
             set
             {
                 _width = value;
@@ -21,14 +26,9 @@ namespace Battleships.Models.GameModels
             }
         }
 
-        private static int _height;
-
         public static int Height
         {
-            get
-            {
-                return _height;
-            }
+            get => _height;
             set
             {
                 _height = value;
@@ -36,14 +36,9 @@ namespace Battleships.Models.GameModels
             }
         }
 
-        private static int _battleships;
-
         public static int Battleships
         {
-            get
-            {
-                return _battleships;
-            }
+            get => _battleships;
             set
             {
                 _battleships = value;
@@ -51,14 +46,9 @@ namespace Battleships.Models.GameModels
             }
         }
 
-        private static int _carriers;
-
         public static int Carriers
         {
-            get
-            {
-                return _carriers;
-            }
+            get => _carriers;
             set
             {
                 _carriers = value;
@@ -66,14 +56,9 @@ namespace Battleships.Models.GameModels
             }
         }
 
-        private static int _destroyers;
-
         public static int Destroyers
         {
-            get
-            {
-                return _destroyers;
-            }
+            get => _destroyers;
             set
             {
                 _destroyers = value;
@@ -81,14 +66,9 @@ namespace Battleships.Models.GameModels
             }
         }
 
-        private static int _patrolBoats;
-
         public static int PatrolBoats
         {
-            get
-            {
-                return _patrolBoats;
-            }
+            get => _patrolBoats;
             set
             {
                 _patrolBoats = value;
@@ -98,68 +78,23 @@ namespace Battleships.Models.GameModels
 
         public static async void Init()
         {
-            string val;
-
-            val = await SecureStorage.GetAsync("WidthSettings");
-            if (string.IsNullOrEmpty(val))
-            {
-                Width = 1;
-            }
-            else
-            {
-                Width = int.Parse(val);
-            }
+            var val = await SecureStorage.GetAsync("WidthSettings");
+            Width = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
 
             val = await SecureStorage.GetAsync("HeightSettings");
-            if (string.IsNullOrEmpty(val))
-            {
-                Height = 1;
-            }
-            else
-            {
-                Height = int.Parse(val);
-            }
+            Height = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
 
             val = await SecureStorage.GetAsync("BattleshipsSettings");
-            if (string.IsNullOrEmpty(val))
-            {
-                Battleships = 1;
-            }
-            else
-            {
-                Battleships = int.Parse(val);
-            }
+            Battleships = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
 
             val = await SecureStorage.GetAsync("CarriersSettings");
-            if (string.IsNullOrEmpty(val))
-            {
-                Carriers = 1;
-            }
-            else
-            {
-                Carriers = int.Parse(val);
-            }
+            Carriers = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
 
             val = await SecureStorage.GetAsync("DestroyersSettings");
-            if (string.IsNullOrEmpty(val))
-            {
-                Destroyers = 1;
-            }
-            else
-            {
-                Destroyers = int.Parse(val);
-            }
+            Destroyers = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
 
             val = await SecureStorage.GetAsync("PatrolBoatsSettings");
-            if (string.IsNullOrEmpty(val))
-            {
-                PatrolBoats = 1;
-            }
-            else
-            {
-                PatrolBoats = int.Parse(val);
-            }
-
+            PatrolBoats = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Battleships.Models.GameModels
+﻿namespace Battleships.Models.GameModels.Enums
 {
     public enum FireResult
     {

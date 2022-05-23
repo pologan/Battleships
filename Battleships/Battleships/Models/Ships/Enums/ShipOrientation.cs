@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Battleships.Models.Ships
+﻿namespace Battleships.Models.Ships.Enums
 {
     public enum ShipOrientation
     {

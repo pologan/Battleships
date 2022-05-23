@@ -1,10 +1,5 @@
-﻿using Battleships.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System;
+using Battleships.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,21 +22,15 @@ namespace Battleships.Views
         {
             base.OnAppearing();
 
-            _vm.OnApppearing();
+            _vm.OnAppearing();
         }
 
         private void Save_Clicked(object sender, EventArgs e)
         {
-            if(_vm.Save())
-            {
+            if (_vm.Save())
                 DisplayAlert("Saved", "Settings saved", "Ok");
-
-
-            }
             else
-            {
-                DisplayAlert("Errors occured", _vm.ErrorLog, "Ok");
-            }
+                DisplayAlert("Errors occurred", _vm.ErrorLog, "Ok");
         }
     }
 }

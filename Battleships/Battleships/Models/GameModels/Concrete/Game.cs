@@ -1,48 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Battleships.Models.GameModels
+﻿namespace Battleships.Models.GameModels.Concrete
 {
     public class Game
     {
-        public Player PlayerA { get; set; }
-
-        public Player PlayerB { get; set; }
-
-        public bool IsFinished
+        public Game()
         {
-            get
-            {
-                return PlayerA.HasLost || PlayerB.HasLost;
-            }
-
+            PlayerA = new Player("Player A");
+            PlayerB = new Player("Player B");
         }
+
+        public Player PlayerA { get; }
+
+        public Player PlayerB { get; }
+
+        public bool IsFinished => PlayerA.HasLost || PlayerB.HasLost;
 
         public Player Winner
         {
             get
             {
-                if (IsFinished)
-                {
-                    if (PlayerA.HasLost)
-                    {
-                        return PlayerB;
-                    }
-                    else
-                    {
-                        return PlayerA;
-                    }
-                }
+                if (!IsFinished) return null;
 
-                return null;
+                return PlayerA.HasLost ? PlayerB : PlayerA;
             }
-        }
-
-        public Game()
-        {
-            PlayerA = new Player("Player A");
-            PlayerB = new Player("Player B");
         }
 
         public void PlayRound()
@@ -51,20 +30,16 @@ namespace Battleships.Models.GameModels
             var result = PlayerB.ProcessFire(coords);
             PlayerA.ProcessFireResult(coords, result);
 
-            if (!PlayerB.HasLost)
-            {
-                coords = PlayerB.Fire();
-                result = PlayerA.ProcessFire(coords);
-                PlayerB.ProcessFireResult(coords, result);
-            }
+            if (PlayerB.HasLost) return;
+
+            coords = PlayerB.Fire();
+            result = PlayerA.ProcessFire(coords);
+            PlayerB.ProcessFireResult(coords, result);
         }
 
         public void PlayGame()
         {
-            while (!IsFinished)
-            {
-                PlayRound();
-            }
+            while (!IsFinished) PlayRound();
         }
     }
 }

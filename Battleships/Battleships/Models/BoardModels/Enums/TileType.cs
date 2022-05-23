@@ -1,4 +1,4 @@
-﻿namespace Battleships.Models.BoardModels
+﻿namespace Battleships.Models.BoardModels.Enums
 {
     public enum TileType
     {

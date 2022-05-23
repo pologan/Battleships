@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Battleships.Views.BoardPage" 
-             xmlns:vm="clr-namespace:Battleships.ViewModels" 
+             xmlns:vm="clr-namespace:Battleships.ViewModels"
+             x:Class="Battleships.Views.BoardPage"
              x:DataType="vm:BoardViewModel"
              Title="{Binding Title}">
 
@@ -14,9 +14,9 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Label Style="{StaticResource Header}" Text="Player A"  HorizontalOptions="Center"/>
-            <Grid x:Name="gridA" Style="{StaticResource BoardGrid}" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Grid x:Name="GridA" Style="{StaticResource BoardGrid}" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
             <Line HeightRequest="2" Margin="0,10,0,10" BackgroundColor="{StaticResource PrimaryText}" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
-            <Grid x:Name="gridB" Style="{StaticResource BoardGrid}" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Grid x:Name="GridB" Style="{StaticResource BoardGrid}" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
             <Label Style="{StaticResource Header}" Text="Player B"  HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>

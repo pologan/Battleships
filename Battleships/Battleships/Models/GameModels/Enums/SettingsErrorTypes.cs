@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
-namespace Battleships.Models.GameModels
+namespace Battleships.Models.GameModels.Enums
 {
     public enum SettingsErrorTypes
     {
@@ -14,10 +11,10 @@ namespace Battleships.Models.GameModels
         WidthTooSmall,
 
         [Description("Heigth must be smaller than 12")]
-        HeigthTooBig,
+        HeightTooBig,
 
         [Description("Width must be bigger than 8")]
-        HeigthTooSmall,
+        HeightTooSmall,
 
         [Description("Too many ships for this board!")]
         TooManyShips

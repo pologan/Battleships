@@ -1,13 +1,10 @@
-﻿using Battleships.Models.GameModels;
-using System;
+﻿using Battleships.Models.GameModels.Concrete;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Battleships
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();

@@ -1,12 +1,9 @@
-﻿using Battleships.ViewModels;
-using Battleships.Views;
-using System;
-using System.Collections.Generic;
+﻿using Battleships.Views;
 using Xamarin.Forms;
 
 namespace Battleships
 {
-    public partial class AppShell : Xamarin.Forms.Shell
+    public partial class AppShell : Shell
     {
         public AppShell()
         {
@@ -16,6 +13,5 @@ namespace Battleships
             Routing.RegisterRoute(nameof(SettingsPage), typeof(SettingsPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
         }
-
     }
 }

@@ -1,15 +1,15 @@
-﻿namespace Battleships.Models.BoardModels
+﻿namespace Battleships.Models.BoardModels.Concrete
 {
     public class TileCoordinates
     {
-        public int Row { get; set; }
-
-        public int Column { get; set; }
-
         public TileCoordinates(int row, int column)
         {
             Row = row;
             Column = column;
         }
+
+        public int Row { get; }
+
+        public int Column { get; }
     }
 }

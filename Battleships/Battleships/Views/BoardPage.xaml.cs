@@ -1,7 +1,7 @@
-﻿using Battleships.Extensions;
-using Battleships.ViewModels;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Battleships.Extensions;
+using Battleships.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,6 +11,7 @@ namespace Battleships.Views
     public partial class BoardPage : ContentPage
     {
         private readonly BoardViewModel _vm;
+
         public BoardPage()
         {
             InitializeComponent();
@@ -42,11 +43,11 @@ namespace Battleships.Views
 
         private void RefreshBoards()
         {
-            gridA.Clear();
-            gridB.Clear();
+            GridA.Clear();
+            GridB.Clear();
 
-            _vm.InitBoard(_vm.Game.PlayerA.Board, gridA);
-            _vm.InitBoard(_vm.Game.PlayerB.Board, gridB);
+            _vm.InitBoard(_vm.Game.PlayerA.Board, GridA);
+            _vm.InitBoard(_vm.Game.PlayerB.Board, GridB);
         }
 
         private async void Simulate_Clicked(object sender, EventArgs e)
@@ -72,8 +73,8 @@ namespace Battleships.Views
 
         private async Task<bool> DisplayWinner(string winnerName)
         {
-            return await DisplayAlert("Game finished", $"The winner is {winnerName}!", "Randomize again", "Close window");
+            return await DisplayAlert("Game finished", $"The winner is {winnerName}!", "Randomize again",
+                "Close window");
         }
-
     }
 }

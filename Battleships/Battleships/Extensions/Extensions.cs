@@ -1,4 +1,4 @@
-﻿using Battleships.Models.BoardModels;
+﻿using Battleships.Models.BoardModels.Enums;
 using Xamarin.Forms;
 
 namespace Battleships.Extensions
@@ -9,7 +9,6 @@ namespace Battleships.Extensions
         {
             switch (tileType)
             {
-                
                 case TileType.ShipPart:
                     return "S";
                 case TileType.Hit:
