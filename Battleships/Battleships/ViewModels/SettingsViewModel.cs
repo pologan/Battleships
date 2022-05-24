@@ -10,9 +10,6 @@ namespace Battleships.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-        private const int MinSize = 8;
-        private const int MaxSize = 12;
-
         public SettingsViewModel()
         {
             Title = "Settings";
@@ -74,16 +71,16 @@ namespace Battleships.ViewModels
         {
             Errors.Clear();
 
-            if (Width < MinSize)
+            if (Width < Settings.MinSize)
                 Errors.Add(SettingsErrorTypes.WidthTooSmall);
 
-            if (Width > MaxSize)
+            if (Width > Settings.MaxSize)
                 Errors.Add(SettingsErrorTypes.WidthTooBig);
 
-            if (Height < MinSize)
+            if (Height < Settings.MinSize)
                 Errors.Add(SettingsErrorTypes.HeightTooSmall);
 
-            if (Height > MaxSize)
+            if (Height > Settings.MaxSize)
                 Errors.Add(SettingsErrorTypes.HeightTooBig);
 
             if (Errors.Count != 0) return Errors.Count == 0;

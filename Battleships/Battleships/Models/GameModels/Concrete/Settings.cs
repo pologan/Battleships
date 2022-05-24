@@ -4,6 +4,11 @@ namespace Battleships.Models.GameModels.Concrete
 {
     public static class Settings
     {
+        public const int MinSize = 8;
+        public const int MaxSize = 12;
+        public const int DefaultSize = 10;
+        public const int DefaultShipAmount = 1;
+
         private static int _width;
 
         private static int _height;
@@ -79,22 +84,22 @@ namespace Battleships.Models.GameModels.Concrete
         public static async void Init()
         {
             var val = await SecureStorage.GetAsync("WidthSettings");
-            Width = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
+            Width = string.IsNullOrEmpty(val) ? DefaultSize : int.Parse(val);
 
             val = await SecureStorage.GetAsync("HeightSettings");
-            Height = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
+            Height = string.IsNullOrEmpty(val) ? DefaultSize : int.Parse(val);
 
             val = await SecureStorage.GetAsync("BattleshipsSettings");
-            Battleships = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
+            Battleships = string.IsNullOrEmpty(val) ? DefaultShipAmount : int.Parse(val);
 
             val = await SecureStorage.GetAsync("CarriersSettings");
-            Carriers = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
+            Carriers = string.IsNullOrEmpty(val) ? DefaultShipAmount : int.Parse(val);
 
             val = await SecureStorage.GetAsync("DestroyersSettings");
-            Destroyers = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
+            Destroyers = string.IsNullOrEmpty(val) ? DefaultShipAmount : int.Parse(val);
 
             val = await SecureStorage.GetAsync("PatrolBoatsSettings");
-            PatrolBoats = string.IsNullOrEmpty(val) ? 1 : int.Parse(val);
+            PatrolBoats = string.IsNullOrEmpty(val) ? DefaultShipAmount : int.Parse(val);
         }
     }
 }
